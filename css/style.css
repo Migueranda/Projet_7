@@ -1,0 +1,176 @@
+#titre_princpal{    
+color:#D04F4F ;
+font-weight: 500;
+}
+.btn-green{
+    background-color: #68D9A4 !important;
+    border-color: #68D9A4 !important;
+    border-radius:5px;  
+}
+.btn-rose{
+    background-color: #ED6454;
+    border-color: #ED6454;
+    border-radius:5px;  
+}
+.btn-bleu{
+    border: solid #3282F7 2px !important;
+    background-color: #3282F7 !important ;
+    border-radius:5px;
+}
+.text{
+    font-size: 0.7em;
+}
+/* Couper le text avec trois petit points */
+.text_desc{
+    font-size: 0.7em;
+    font-weight: 600;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow-y: hidden;
+}
+.btn-platinum{
+    background-color: #e7e7e7;
+}
+.card{
+    border: none;
+}
+.card-title{
+    font-size: 16px;
+}
+/* search bar */
+#search_bar{
+    background-color: #E7E7E7;
+    border: none;
+    color: #000000;
+}
+#search_bar > ::placeholder{
+    color: #000000;
+}
+
+/*liste deroulante */
+.master-cont{
+    position: absolute;
+    z-index: 1;
+}
+.big_container{
+    margin-right:2%!important;    
+}
+.list-group-item{
+    background-color:inherit!important;    
+    padding-right: 0px!important;
+    padding-left: 20px!important;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+.form-control:focus {
+    border-color:inherit !important;
+    box-shadow:  inherit!important;
+}
+div > #input_ing > input, div > #input_app > input, div > #input_ust > input{
+    color: white!important;
+    background-color:inherit!important;
+    border:inherit !important;
+    margin-top: -7px;
+    padding-left: -10px;    
+}
+div#input_ing,div#input_ust, div#input_app{
+padding-top: 15px;
+}
+.input_width{
+    margin-top: 5px;
+}
+#input_ing > ::placeholder, #input_app > ::placeholder, #input_ust > ::placeholder{
+    color: #fff;
+    font-size: 14px;
+}
+.fa-chevron-up{
+    cursor: pointer;
+}
+li{
+    color: white;
+    line-height:0px!important;
+    font-size: 14px;
+}
+ul > li > a{
+    text-decoration: unset!important;
+    color: white;
+}
+li > a:hover{
+    color: #fff;
+}
+#btnContentId:focus{
+    color: white;
+}
+.input-group-text{
+   background-color: #e7e7e7;
+   border: none;  
+}
+#icon_search{
+    width: 25px;
+    margin: 10px;
+}
+/*card recette */
+p.row{
+    white-space: nowrap;
+    display: unset;
+    font-size: 12px;
+}
+.container_width{
+    margin-left: 5%!important; 
+    margin-right: 5%!important;
+}
+
+#search_width{
+    margin-left: 10px!important;
+    margin-right: 10px!important;
+}
+@media (max-width: 576px) {
+    #cont_tags{
+        display: flex!important;
+        flex-direction: column!important;
+        position: relative;
+        align-self: center;
+        align-content: flex-start;
+    }
+    .btn-bleu,.btn-green,.btn-rose{
+        margin-bottom: 20px;
+    }
+    .btn-green,.btn-rose{
+        margin-left: 16px;
+        padding-right: 30px!important;
+    }
+    #container{
+        padding-top: 0px!important;
+    }
+    .row{
+        margin-right: 0px!important;
+    }
+    article{
+        width: 100%!important;
+        padding-left: 0px!important;
+        padding-right: 0px!important;
+     }
+    p{
+        padding: 0px!important;
+    }
+    .descrip_recip{
+        padding: 0px!important;
+        margin-left: 15px!important;
+        padding-left: 20px!important;
+    }
+    .container_width{
+        width: 100% !important;
+        margin-left: 0px!important; 
+        margin-right: 5%!important;
+    }
+    .text_desc, span{
+        font-size: 0.7em;
+    }
+    ul{
+        max-height: unset!important;
+    }    
+ } 
+
+
