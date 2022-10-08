@@ -4,7 +4,7 @@ function filterDuplicate(arr) {
         return arr.indexOf(el) == pos
     })
 }
-// ______________________________________________________________________
+
 function getRecipesOldSchool(recipes, searchBarStr){
     // Construction du tableau des éléments
     let ingredients = []
@@ -29,7 +29,6 @@ function getRecipesOldSchool(recipes, searchBarStr){
     })
 
     // construction des tableaux des listes déroulantes (ingredient / ustensils / appareils)
-
     recipes.forEach((recipe) => {
         // construction du tableau des ingrédients
         recipe.ingredients.forEach((ingredient) => {        
@@ -74,71 +73,69 @@ function getRecipesOldSchool(recipes, searchBarStr){
     return {recipes, ingredients, ustensils, appareils}    
 
  }
-// ______________________________________________________________________
-// ______________________________________________________________________
 
-function getRecipes(recipes, searchBarStr){ 
-    // Construction du tableau des éléments      
-    let ingredients = []
-    let ustensils = [] 
-    let appareils = []
+// function getRecipes(recipes, searchBarStr){ 
+//     // Construction du tableau des éléments      
+//     let ingredients = []
+//     let ustensils = [] 
+//     let appareils = []
 
-    // filtrer recette par titre || description || ingrédients
-    recipes = recipes.filter(function(recipe){
-        return JSON.stringify(recipe).toLowerCase().indexOf(searchBarStr) !== -1 
-    })   
+//     // filtrer recette par titre || description || ingrédients
+//     recipes = recipes.filter(function(recipe){
+//         return JSON.stringify(recipe).toLowerCase().indexOf(searchBarStr) !== -1 
+//     })   
 
-    // Filtre specifique sur les liste deroulante 
-    tags.forEach((tag) =>{
-        recipes = recipes.filter(function (recipe) {
-            return JSON.stringify(recipe).toLowerCase().indexOf(tag.text.toLowerCase()) !== -1   
-        }) 
-    })
+//     // Filtre specifique sur les liste deroulante 
+//     tags.forEach((tag) =>{
+//         recipes = recipes.filter(function (recipe) {
+//             return JSON.stringify(recipe).toLowerCase().indexOf(tag.text.toLowerCase()) !== -1   
+//         }) 
+//     })
 
-    // construction des tableaux des listes déroulantes (ingredient / ustensils / appareils)
-    recipes.forEach((recipe) => {
-        // construction du tableau des ingrédients
-        recipe.ingredients.forEach((ingredient) => {        
-            ingredients.push(ingredient.ingredient)        
-        })
-        // construction du tableau des ustensils
-        recipe.ustensils.forEach((ustensil) =>{
-            ustensils.push(ustensil)
-        })
-        // construction du tableau des appareils
-        appareils.push(recipe.appliance)
-    })
+//     // construction des tableaux des listes déroulantes (ingredient / ustensils / appareils)
+//     recipes.forEach((recipe) => {
+//         // construction du tableau des ingrédients
+//         recipe.ingredients.forEach((ingredient) => {        
+//             ingredients.push(ingredient.ingredient)        
+//         })
+//         // construction du tableau des ustensils
+//         recipe.ustensils.forEach((ustensil) =>{
+//             ustensils.push(ustensil)
+//         })
+//         // construction du tableau des appareils
+//         appareils.push(recipe.appliance)
+//     })
 
-    // on doit enlever des listes déroulantes, les ingrédients/ustensil/appareils qui sont présent dans le tableau tags
+//     // on doit enlever des listes déroulantes, les ingrédients/ustensil/appareils qui sont présent dans le tableau tags
 
-    tags.forEach((tag) => {
-        switch(tag.type){
-            case 'ing':
-                ingredients = ingredients.filter(function(ingredient){
-                    return ingredient.toLowerCase() != tag.text.toLowerCase()
-                })
-                break;
-            case 'ust':
-                ustensils = ustensils.filter(function(ustensil){
-                    return ustensil.toLowerCase() != tag.text.toLowerCase()
-                })
-                break;
-            case 'app':
-                appareils = appareils.filter(function(appareil){
-                    return appareil.toLowerCase() != tag.text.toLowerCase()
-                })
-                break;
-        }
-    })
+//     tags.forEach((tag) => {
+//         switch(tag.type){
+//             case 'ing':
+//                 ingredients = ingredients.filter(function(ingredient){
+//                     return ingredient.toLowerCase() != tag.text.toLowerCase()
+//                 })
+//                 break;
+//             case 'ust':
+//                 ustensils = ustensils.filter(function(ustensil){
+//                     return ustensil.toLowerCase() != tag.text.toLowerCase()
+//                 })
+//                 break;
+//             case 'app':
+//                 appareils = appareils.filter(function(appareil){
+//                     return appareil.toLowerCase() != tag.text.toLowerCase()
+//                 })
+//                 break;
+//         }
+//     })
 
-    // Utilisation de la fonction filter pour dedoubloner mes tableaux
-    // https://www.delftstack.com/fr/howto/javascript/javascript-remove-duplicates-from-an-array/
-    ingredients = filterDuplicate(ingredients)
-    ustensils = filterDuplicate(ustensils)
-    appareils = filterDuplicate(appareils)
+//     // Utilisation de la fonction filter pour dedoubloner mes tableaux
+//     // https://www.delftstack.com/fr/howto/javascript/javascript-remove-duplicates-from-an-array/
+//     ingredients = filterDuplicate(ingredients)
+//     ustensils = filterDuplicate(ustensils)
+//     appareils = filterDuplicate(appareils)
 
-    return {recipes, ingredients, ustensils, appareils}  
-}
+//     return {recipes, ingredients, ustensils, appareils}  
+// }
 
 function displayDataRecipes(recipes){
     
@@ -157,8 +154,7 @@ function displayDataRecipes(recipes){
 function init(dataSrc, searchBarStr){
     // filtre les données en executant la function getRecipes
     // const {recipes, ingredients, ustensils, appareils} = getRecipes(dataSrc, searchBarStr)
-    const {recipes, ingredients, ustensils, appareils} = getRecipesOldSchool(dataSrc, searchBarStr)
-    // getRecipesOldSchool(recipes, searchBarStr)   
+    const {recipes, ingredients, ustensils, appareils} = getRecipesOldSchool(dataSrc, searchBarStr) 
     // affichage des recettes
     displayDataRecipes(recipes) 
     // logique pour afficher les 3 listes déroulantes
