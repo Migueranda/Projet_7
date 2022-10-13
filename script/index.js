@@ -1,81 +1,8 @@
 function filterDuplicate(arr) {
     return arr.filter(function (el, pos) {
-    //   return el.toLowerCase().indexOf(requete.toLowerCase()) !== -1;
         return arr.indexOf(el) == pos
     })
 }
-// ______________________________________________________________________
-function getRecipesOldSchool(recipes, searchBarStr){
-    // Construction du tableau des éléments
-    let ingredients = []
-    let ustensils = []
-    let appareils = []
-
-    let recipesFiltered = []
-    for(let i = 0; i < recipes.length; i++){
-       if(JSON.stringify(recipes[i]).toLowerCase().indexOf(searchBarStr) !== -1){
-        recipesFiltered.push(recipes[i])
-       } 
-    }
-
-    // on écrase recipes avec les bonnes données filtrées
-    recipes = recipesFiltered
-
-    // Filtre specifique sur les liste deroulante 
-    tags.forEach((tag) =>{
-        recipes = recipes.filter(function (recipe) {
-            return JSON.stringify(recipe).toLowerCase().indexOf(tag.text.toLowerCase()) !== -1   
-        }) 
-    })
-
-    // construction des tableaux des listes déroulantes (ingredient / ustensils / appareils)
-
-    recipes.forEach((recipe) => {
-        // construction du tableau des ingrédients
-        recipe.ingredients.forEach((ingredient) => {        
-            ingredients.push(ingredient.ingredient)        
-        })
-    // construction du tableau des ustensils
-        recipe.ustensils.forEach((ustensil) =>{
-            ustensils.push(ustensil)
-        })
-        //construction du tableau des appareils
-        appareils.push(recipe.appliance)
-    })
-
-    // on doit enlever des listes déroulantes, les ingrédients/ustensil/appareils qui sont présent dans le tableau tags
-    // console.log(tags)
-    tags.forEach((tag) => {
-        switch(tag.type){
-            case 'ing':
-                ingredients = ingredients.filter(function(ingredient){
-                    return ingredient.toLowerCase() != tag.text.toLowerCase()
-                })
-                break;
-            case 'ust':
-                ustensils = ustensils.filter(function(ustensil){
-                    return ustensil.toLowerCase() != tag.text.toLowerCase()
-                })
-                break;
-            case 'app':
-                appareils = appareils.filter(function(appareil){
-                    return appareil.toLowerCase() != tag.text.toLowerCase()
-                })
-                break;
-        }
-    })
-
-    // Utilisation de la fonction filter pour dedoubloner mes tableaux
-    // https://www.delftstack.com/fr/howto/javascript/javascript-remove-duplicates-from-an-array/
-   ingredients = filterDuplicate(ingredients)
-   ustensils = filterDuplicate(ustensils)
-   appareils = filterDuplicate(appareils)
-
-    return {recipes, ingredients, ustensils, appareils}    
-
- }
-// ______________________________________________________________________
-// ______________________________________________________________________
 
 function getRecipes(recipes, searchBarStr){ 
     // Construction du tableau des éléments      
@@ -156,18 +83,18 @@ function displayDataRecipes(recipes){
 // fonction principale
 function init(dataSrc, searchBarStr){
     // filtre les données en executant la function getRecipes
-    // const {recipes, ingredients, ustensils, appareils} = getRecipes(dataSrc, searchBarStr)
     const {recipes, ingredients, ustensils, appareils} = getRecipesOldSchool(dataSrc, searchBarStr)
     // getRecipesOldSchool(recipes, searchBarStr)   
     // affichage des recettes
     displayDataRecipes(recipes) 
     // logique pour afficher les 3 listes déroulantes
     dropDown(ingredients, ustensils, appareils)
+   // gestion de la saisie dans le champ input et la gestion du filtre surl'affichage des liste deroulants
     searchTagIng(ingredients)
     searchTagApp(appareils)
     searchTagUst(ustensils)
+    //gestion de l'ajout d'un tag par evenement 
     addTag()
-    // displayTags()
 }
 
 //Declaration global de la variable tags

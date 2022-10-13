@@ -12,13 +12,9 @@ function searchTagIng(ingredients){
 
     // calcul de la taille du conteneur ul en fonction de nombre d'éléments (li)
     function calc_taille_ul_cont(element_html){
-        // console.log('----------------')
-        // console.log('cal taille ok')
-        // const default_width = 200
         const default_width = 180
         let nbr_column = Math.ceil(element_html.querySelectorAll('ul > li').length / 40) // 2,1 => 3
         let total_width = default_width * nbr_column 
-        // console.log("Calc taille width : " + total_width)
         element_html.querySelector('ul').style.width = total_width + 'px'
     }
 
@@ -50,8 +46,6 @@ function searchTagIng(ingredients){
     // ajout addEvent
     inputIng.addEventListener('input',handler)
 } 
-//____________________________________________
-// ___________________________________________
 // Appareils
 function searchTagApp(appareils){
 
@@ -67,13 +61,9 @@ function searchTagApp(appareils){
 
     // calcul de la taille du conteneur ul en fonction de nombre d'éléments (li)
     function calc_taille_ul_cont(element_html){
-        // console.log('----------------')
-        // console.log('cal taille ok')
-        // const default_width = 200
         const default_width = 180
         let nbr_column = Math.ceil(element_html.querySelectorAll('ul > li').length / 40) // 2,1 => 3
         let total_width = default_width * nbr_column 
-        // console.log("Calc taille width : " + total_width)
         element_html.querySelector('ul').style.width = total_width + 'px'
     }
 
@@ -107,9 +97,7 @@ function searchTagApp(appareils){
     // ajout addEvent
     inputApp.addEventListener('input',handler)
 }  
-//____________________________________________
-// ___________________________________________
-//   
+//   ustensils
 function searchTagUst(ustensils){
 
     const inputUst = document.querySelector('div#input_ust > input')
@@ -124,13 +112,9 @@ function searchTagUst(ustensils){
 
     // calcul de la taille du conteneur ul en fonction de nombre d'éléments (li)
     function calc_taille_ul_cont(element_html){
-        // console.log('----------------')
-        // console.log('cal taille ok')
-        // const default_width = 200
         const default_width = 180
         let nbr_column = Math.ceil(element_html.querySelectorAll('ul > li').length / 40) // 2,1 => 3
         let total_width = default_width * nbr_column 
-        // console.log("Calc taille width : " + total_width)
         element_html.querySelector('ul').style.width = total_width + 'px'
     }
 

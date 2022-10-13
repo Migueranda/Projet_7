@@ -1,4 +1,4 @@
-// function searchBar(){
+// gestion de la saisi de la barre de recherche principale
     const searchBar = document.getElementById('search_bar')
 
     searchBar.addEventListener('input', function(event){
@@ -8,4 +8,4 @@
             init(recipes, event.target.value.toLowerCase()); 
         }          
     })
-// }
+

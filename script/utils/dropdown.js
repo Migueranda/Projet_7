@@ -68,7 +68,6 @@ function dropDown(ingredients, appareils, ustensils){
         const default_width = 180
         let nbr_column = Math.ceil(element_html.querySelectorAll('ul > li').length / 40) // 2,1 => 3
         let total_width = default_width * nbr_column 
-        // console.log("Calc taille width : " + total_width)
         element_html.querySelector('ul').style.width = total_width + 'px'
     }
 

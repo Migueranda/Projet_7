@@ -2,8 +2,7 @@ function addTag(){
     let allLi = document.querySelectorAll('li > a')
     
     allLi.forEach((li) => {
-        li.addEventListener('click', function(event){   
-            console.log("-- ajout tag")         
+        li.addEventListener('click', function(event){           
             // utilisation d'un tableau d'objets pour les tags
             let tag = {
                 text : event.target.textContent, // texte présent dans le tag <li> selectionné
@@ -24,7 +23,6 @@ function addTag(){
 }
 
 function displayTags(){
-    console.log("-- display tag")
     let tagsContent = document.getElementById('tags')
     // on supprime tous les tags présent sur la page
     if(tagsContent.hasChildNodes()){
@@ -43,12 +41,10 @@ function displayTags(){
     
     // init pour scénario nominal (affiner recherche avec les tags)
     // ou scénario 2 - directement filtrer à partir des tags
-    // console.log(`@@ init déclenché par displayTags : ${searchBar.value}`)
     init(recipes, searchBar.value)  
 }
 
 function closeTag(){
-    // console.log("@@ Close Tags")
     let closeTags = document.querySelectorAll('div#tags > button > span.close')
 
     closeTags.forEach((closeTag) => {
