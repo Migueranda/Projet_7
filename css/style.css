@@ -48,6 +48,10 @@ font-weight: 500;
 #search_bar > ::placeholder{
     color: #000000;
 }
+.message-err{
+    margin-top: 40px;
+    font-size: 20px;
+}
 
 /*liste deroulante */
 .master-cont{
@@ -152,6 +156,12 @@ p.row{
         padding-left: 0px!important;
         padding-right: 0px!important;
      }
+    .message-err{
+        margin-top: 0px;
+        font-size: unset;
+        padding: 10px;
+    }
+     
     p{
         padding: 0px!important;
     }
