@@ -80,11 +80,24 @@ function displayDataRecipes(recipes){
     });
 }
 
+function displayMessageErr(recipes){
+    if (recipes.length == 0){
+        const cardSection = document.getElementById("container"); // toujours vide car displayDataRecipes est exécuté avant et nettoie tous les éléments
+    
+        const elDiv = document.createElement('div'); 
+        elDiv.className = 'message-err'
+        let html = `<div>«Aucune recette ne correspond à votre critère… vous pouvez
+        chercher « tarte aux pommes », « poisson », etc.
+        </div>`
+        elDiv.innerHTML = html;
+        cardSection.appendChild(elDiv)
+        }
+}
+
 // fonction principale
 function init(dataSrc, searchBarStr){
     // filtre les données en executant la function getRecipes
-    const {recipes, ingredients, ustensils, appareils} = getRecipesOldSchool(dataSrc, searchBarStr)
-    // getRecipesOldSchool(recipes, searchBarStr)   
+    const {recipes, ingredients, ustensils, appareils} = getRecipes(dataSrc, searchBarStr)  
     // affichage des recettes
     displayDataRecipes(recipes) 
     // logique pour afficher les 3 listes déroulantes
@@ -95,6 +108,8 @@ function init(dataSrc, searchBarStr){
     searchTagUst(ustensils)
     //gestion de l'ajout d'un tag par evenement 
     addTag()
+    // affichage suggestion si aucune recette après filtre
+    displayMessageErr(recipes)
 }
 
 //Declaration global de la variable tags
