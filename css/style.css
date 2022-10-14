@@ -171,7 +171,7 @@ p.row{
         padding-left: 20px!important;
     }
     .container_width{
-        width: 100% !important;
+        /* width: 100% !important; */
         margin-left: 0px!important; 
         margin-right: 5%!important;
     }
@@ -180,7 +180,57 @@ p.row{
     }
     ul{
         max-height: unset!important;
-    }    
- } 
+    }  
 
+    ::-webkit-scrollbar {
+        width: 4px;
+        overflow-x: hidden!important;
+      }
+    #ing_btn_content{
+        height: 400px!important;
+        overflow-y:scroll!important;
+        overflow-x: hidden!important;
+    }    
+      
+    #ing_btn_content::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #3282F7!important;
+    border-radius: 10px!important;
+    }
+      
+    :-webkit-scrollbar-thumb {
+    background:grey;
+    border-radius: 10px;
+    }
+    
+    #ing_btn_content::-webkit-scrollbar-track{
+        box-shadow: inset 0 0 5px #3282F7!important;
+        border-radius: 10px;
+    }     
+ } 
+ ::-webkit-scrollbar {
+    width: 4px;
+    overflow-x: hidden!important;
+  }
+  
+  #ing_btn_content::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #3282F7;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background:grey;
+    border-radius: 10px;
+}
+#ing_btn_content{
+    height: 35%;
+    overflow: scroll;
+}
+#app_btn_content::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #68D9A4;
+    border-radius: 10px;
+  }
+#app_btn_content{
+    height: 57%;
+    overflow: scroll !important;
+}
 

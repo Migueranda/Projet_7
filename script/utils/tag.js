@@ -1,6 +1,6 @@
 function addTag(){
     let allLi = document.querySelectorAll('li > a')
-    
+    //ajout d'evenemet pour afficher les element li
     allLi.forEach((li) => {
         li.addEventListener('click', function(event){           
             // utilisation d'un tableau d'objets pour les tags
@@ -41,7 +41,8 @@ function displayTags(){
     
     // init pour scénario nominal (affiner recherche avec les tags)
     // ou scénario 2 - directement filtrer à partir des tags
-    init(recipes, searchBar.value)  
+
+    init(recipes, searchBar.value)
 }
 
 function closeTag(){

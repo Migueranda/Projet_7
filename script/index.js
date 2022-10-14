@@ -4,22 +4,28 @@ function filterDuplicate(arr) {
     })
 }
 
+// adaptation de la solution normalize (lien ci-dessous) avec en plus tolowercase() pour comparer
+//https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript
+String.prototype.noAccentToLower = function(){
+    return this.normalize("NFD").replace(/\p{Diacritic}/gu, "").toLowerCase()
+}
+
 function getRecipes(recipes, searchBarStr){ 
     // Construction du tableau des éléments      
     let ingredients = []
     let ustensils = [] 
-    let appareils = []
+    let appareils = []   
 
     // filtrer recette par titre || description || ingrédients
     recipes = recipes.filter(function(recipe){
-        return JSON.stringify(recipe).toLowerCase().indexOf(searchBarStr) !== -1 
+        return JSON.stringify(recipe).noAccentToLower().indexOf(searchBarStr.noAccentToLower()) !== -1
     })   
 
     // Filtre specifique sur les liste deroulante 
     tags.forEach((tag) =>{
         recipes = recipes.filter(function (recipe) {
-            return JSON.stringify(recipe).toLowerCase().indexOf(tag.text.toLowerCase()) !== -1   
-        }) 
+            return JSON.stringify(recipe).noAccentToLower().indexOf(tag.text.noAccentToLower()) !== -1   
+        })        
     })
 
     // construction des tableaux des listes déroulantes (ingredient / ustensils / appareils)
@@ -68,11 +74,12 @@ function getRecipes(recipes, searchBarStr){
 }
 
 function displayDataRecipes(recipes){
-    
+  
     const cardSection = document.getElementById("container");
     if(cardSection.hasChildNodes()){
         while(cardSection.firstChild) cardSection.removeChild(cardSection.firstChild)
     } 
+    
     recipes.forEach((recipe) => {
         const cardRecipe = recipeFactory(recipe);
         const blockCard = cardRecipe.getCard();
@@ -86,7 +93,7 @@ function displayMessageErr(recipes){
     
         const elDiv = document.createElement('div'); 
         elDiv.className = 'message-err'
-        let html = `<div>«Aucune recette ne correspond à votre critère… vous pouvez
+        let html = `<div>Aucune recette ne correspond à votre critère… vous pouvez
         chercher « tarte aux pommes », « poisson », etc.
         </div>`
         elDiv.innerHTML = html;
@@ -102,13 +109,13 @@ function init(dataSrc, searchBarStr){
     displayDataRecipes(recipes) 
     // logique pour afficher les 3 listes déroulantes
     dropDown(ingredients, ustensils, appareils)
-   // gestion de la saisie dans le champ input et la gestion du filtre surl'affichage des liste deroulants
+   // gestion de la saisie dans le champ input et la gestion du filtre sur l'affichage des liste deroulants
     searchTagIng(ingredients)
     searchTagApp(appareils)
     searchTagUst(ustensils)
     //gestion de l'ajout d'un tag par evenement 
     addTag()
-    // affichage suggestion si aucune recette après filtre
+    // affichage suggestion 
     displayMessageErr(recipes)
 }
 
